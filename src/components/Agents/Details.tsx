@@ -1,12 +1,11 @@
-import React, { ChangeEvent, FC, Fragment, useEffect, useRef, useState } from 'react'
+import React, { ChangeEvent, FC, Fragment, useRef, useState } from 'react'
 import { useHiddenBodyScroll, useOutsideClickDetector } from '../../hooks'
 import { IAgent, INewReview, IReview } from '../../types/Agent'
-import axios from 'axios'
+import { sendReview, whiteSpaceValidator } from '../utils'
 import Loader from '../Loader'
 import Agent from './Agent'
 import Review from './Review'
 import './Details.css'
-import { whiteSpaceValidator } from '../utils'
 
 interface Props {
   isVisible: boolean
@@ -18,10 +17,6 @@ const defaultReview: INewReview = {
   fullName: '',
   description: '',
   agentId: 0
-}
-
-const sendReview = async (review: INewReview) => {
-  await axios.post('/reviews', { review })
 }
 
 const Details: FC<Props> = ({

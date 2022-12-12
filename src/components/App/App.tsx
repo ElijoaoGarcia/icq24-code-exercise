@@ -1,24 +1,10 @@
 import React, { FC, useEffect, useState } from 'react'
 import { IAgent } from '../../types/Agent'
+import { fetchAgents, replaceSpecialChars } from '../utils'
 import Form from '../Agents/Form'
 import Agents from '../Agents/Agents'
 import Details from '../Agents/Details'
-import axios from 'axios'
 import './App.css'
-
-export async function fetchAgents (): Promise<IAgent[]> {
-  const response = await axios.get('/agents')
-  return response.data as IAgent[]
-}
-
-const replaceSpecialChars = (text = ''): string => {
-  return text
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .trim()
-    .toLowerCase()
-}
 
 const defaultAgent: IAgent = {
   id: 0,
