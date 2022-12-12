@@ -36,7 +36,7 @@ agents.post(async (req, res) => {
 reviews.post(async (req, res) => {
   try {
     const { review } = req.body
-    Review.create(review)
+    await Review.create(review)
     res.status(200).send()
   } catch (error) {
     res.status(500)
