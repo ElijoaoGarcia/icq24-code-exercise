@@ -2,7 +2,9 @@
 
 html {
   font-size: 87.5%;
-} /*14px*/
+}
+
+/*14px*/
 
 body {
   background: white;
@@ -51,4 +53,57 @@ h5 {
 small,
 .text_small {
   font-size: 0.833rem;
+}
+
+.top-content {
+  margin: 15px auto;
+  max-width: 700px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  box-shadow: 0 10px 25px rgba(79, 82, 177, 0.35);
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.top-content input {
+  flex: 1;
+  /* padding: 0 10px; */
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: medium;
+}
+
+.top-content button {
+  height: 35px;
+  padding: 0 15px;
+  border-radius: 10;
+  background-color: #9442ff;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  font-size: medium;
+  cursor: pointer;
+  transition: scale 1s ease-in-out;
+}
+
+.top-content button:focus {
+  scale: .95;
+}
+
+@media only screen and (max-width: 720px) {
+  .app {
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .top-content button {
+    padding: 5px 15px;
+    font-size: smaller;
+  }
 }
