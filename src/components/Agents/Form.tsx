@@ -4,6 +4,7 @@ import { INewAgent } from '../../types/Agent'
 import axios from 'axios'
 import Loader from '../Loader'
 import './Form.css'
+import { urlValidator, whiteSpaceValidator } from '../utils'
 
 interface Props {
     isVisible: boolean
@@ -52,10 +53,16 @@ const Form: FC<Props> = ({
       setIsLoading(true)
 
       if (
-        !data.firstName || !data.lastName || !data.aboutMe ||
-        !data.agentLicense || !data.address || !data.practiceAreas
+        !data.firstName || !data.lastName ||
+        !data.agentLicense || !data.address ||
+        whiteSpaceValidator(data.firstName) || whiteSpaceValidator(data.lastName) ||
+        whiteSpaceValidator(data.address) || whiteSpaceValidator(data.agentLicense)
       ) {
         return alert('Please complete all the fields.')
+      }
+
+      if((data.photoUrl && !urlValidator(data.photoUrl))){
+        return alert('Image url invalid, please choose another one.')
       }
 
       await axios.post('/agents', { agent: data })

@@ -1,5 +1,6 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { IAgent } from "../../types/Agent";
+import { isImgUrl } from '../utils';
 import './Agent.css'
 
 interface Props {
@@ -11,7 +12,16 @@ interface Props {
 const Agent: FC<Props> = ({
   agent, showDeepDetails, onSelect
 }) => {
-  const photo = agent.photoUrl ? agent.photoUrl : '/avatar.png'
+  const [photo, setPhoto] = useState(agent.photoUrl)
+
+  useEffect(() => {
+    const action = async () => {
+      const isValid = await isImgUrl(agent.photoUrl)
+      if(!isValid)  setPhoto('/avatar.png')
+    }
+    action()
+  }, [agent])
+
   return (
     <div className="container" onClick={onSelect}>
       <header>
@@ -26,21 +36,25 @@ const Agent: FC<Props> = ({
         )}
       </header>
 
-      <div className="body">
-        { showDeepDetails
-          ? agent.aboutMe
-          : agent.aboutMe.substring(0, 150)
-        }
-      </div>
+      {agent.aboutMe && (
+        <div className="body">
+          { showDeepDetails
+            ? agent.aboutMe
+            : agent.aboutMe.substring(0, 150)
+          }
+        </div>
+      )}
 
       <footer>
         <div className="full-width-flex-box">
           <div className="one-third-flex-box">
             <span>{agent.address}</span>
           </div>
-          <div className="one-third-flex-box">
-            <span>Areas of Practice: {agent.practiceAreas}</span>
-          </div>
+          { agent.practiceAreas && (
+            <div className="one-third-flex-box">
+              <span>Areas of Practice: {agent.practiceAreas}</span>
+            </div>
+          )}
         </div>
       </footer>
     </div>

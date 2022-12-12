@@ -6,6 +6,7 @@ import Loader from '../Loader'
 import Agent from './Agent'
 import Review from './Review'
 import './Details.css'
+import { whiteSpaceValidator } from '../utils'
 
 interface Props {
   isVisible: boolean
@@ -48,8 +49,9 @@ const Details: FC<Props> = ({
       setIsLoading(true)
 
       if(
-        !data.fullName ||
-        !data.description
+        !data.fullName || !data.description ||
+        whiteSpaceValidator(data.fullName) ||
+        whiteSpaceValidator(data.description)
       ) return alert('Please complete all the fields.')
 
       const review: IReview = {
