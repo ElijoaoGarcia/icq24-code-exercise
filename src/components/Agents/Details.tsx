@@ -69,7 +69,7 @@ const Details: FC<Props> = ({
     <div className='popup'>
       <div ref={contentWrapperRef} className="details-content">
         <header className='header'>
-          <h2>{agent.firstName}&apos; profile</h2>
+          <h2>{agent.firstName}&apos;s profile</h2>
 
           <button type='button' onClick={() => onClose()}>
             x
