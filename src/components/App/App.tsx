@@ -43,7 +43,6 @@ const App: FC = () => {
   const [agent, setAgent] = useState<IAgent>(defaultAgent)
 
   const isAgentSelected = agent.id > 0
-
   const isSearching = search.length > 0
 
   const onFetchAgents = async (): Promise<void> => {
@@ -57,7 +56,9 @@ const App: FC = () => {
     onFetchAgents()
   }, [])
 
-  const filterAgents = ({ practiceAreas, firstName, lastName }: IAgent): Boolean => {
+  const filterAgents = ({
+    practiceAreas, firstName, lastName
+  }: IAgent): Boolean => {
     if (
       (matchText(firstName, search) != null) ||
       (matchText(lastName, search) != null) ||
@@ -78,10 +79,11 @@ const App: FC = () => {
             onChange={(e) => setSearch(e.target.value)}
             placeholder='Type to search'
           />
+
           <button
             onClick={() => setShowForm(true)}
           >
-          Join the team!
+            Join the team!
           </button>
         </div>
 
