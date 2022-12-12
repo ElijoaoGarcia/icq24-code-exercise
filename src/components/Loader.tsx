@@ -1,12 +1,21 @@
 import React, { FC } from 'react'
 
 interface Props {
-  size: number
+  size: number,
+  purple?: boolean 
 }
 
-const Loader: FC<Props> = ({ size }) => {
+const Loader: FC<Props> = ({ size, purple }) => {
   return (
-    <div className="loader" style={{ width: size, height: size }} />
+    <span
+      className="loader"
+      style={{
+        width: size,
+        height: size,
+        borderColor: purple ? '#9442ff' : '#fff',
+        borderBottomColor: 'transparent'
+      }}
+    ></span>
   )
 }
 
