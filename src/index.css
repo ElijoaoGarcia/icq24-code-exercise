@@ -30,3 +30,61 @@ code {
     transform: rotate(360deg);
   }
 }
+
+.input-container {
+  /* background: red; */
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container label {
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.input-container textarea {
+  min-height: 30px;
+  min-width: 100%;
+  max-width: 100%;
+  max-height: 100px;
+  outline: none;
+  border: 0.5px solid #c4c4c4;
+  border-radius: 8px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.input-container input {
+  outline: none;
+  border: 0.5px solid #c4c4c4;
+  border-radius: 8px;
+  height: 35px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.input-container input:focus,
+.input-container textarea:focus {
+  border: 1px solid #555;
+}
+
+form button {
+  height: 35px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  padding: 0 15px;
+  border-radius: 10;
+  background-color: #9442ff;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  font-size: medium;
+  cursor: pointer;
+  transition: scale 1s ease-in-out;
+}
