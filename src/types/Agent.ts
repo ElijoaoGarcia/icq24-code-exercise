@@ -16,3 +16,6 @@ export interface IAgent {
   aboutMe: string
   reviews: IReview[]
 }
+
+export type INewAgent = Omit<IAgent, 'id' | 'reviews'>
+export type INewReview = Omit<IReview, 'id'>
