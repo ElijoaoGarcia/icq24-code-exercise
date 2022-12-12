@@ -79,11 +79,13 @@ const Details: FC<Props> = ({
         </header>
 
         <div className='details-container'>
-          <Agent
-            showDeepDetails
-            onSelect={() => { }}
-            agent={agent}
-          />
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <Agent
+              showDeepDetails
+              onSelect={() => {return}}
+              agent={agent}
+            />
+          </div>
 
           <ul>
             {agent.reviews.map((review) => (

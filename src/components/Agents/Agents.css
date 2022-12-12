@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   justify-content: center;
   padding-bottom: 1rem;
+  gap: 15px
 }
 
 .without-results {

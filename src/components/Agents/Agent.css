@@ -24,6 +24,7 @@
 .avatar {
   border-radius: 50%;
   vertical-align: middle;
+  object-fit: cover;
 
   width: 128px;
   height: 128px;
@@ -35,14 +36,13 @@
   color: #343799;
   font-size: 20px;
   letter-spacing: 0.04em;
-  /* line-height: 20px; */
-  /* margin-bottom: 8px; */
   text-transform: uppercase;
 }
 
 .name {
   color: #1c1c21;
   font-size: 32px;
+  padding: 0 10px;
   font-weight: bold;
   margin: 0;
   text-transform: capitalize;
@@ -65,6 +65,7 @@ footer {
   flex-direction: column;
   height: 122px;
   justify-content: center;
+  padding: 0 32px
 }
 
 footer .full-width-flex-box .one-third-flex-box {
@@ -86,7 +87,7 @@ footer .full-width-flex-box .one-third-flex-box {
 @media screen and (min-width: 640px) {
   .container {
     display: inline-flex;
-    margin-right: 24px;
-    margin-left: 24px;
+    /* margin-right: 24px; */
+    /* margin-left: 24px; */
   }
 }

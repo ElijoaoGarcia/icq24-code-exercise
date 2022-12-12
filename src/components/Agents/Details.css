@@ -71,12 +71,6 @@
     scale: .95;
 }
 
-.details-content .details-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
 .details-content .details-container ul{
     list-style: none;
     padding: 0;
