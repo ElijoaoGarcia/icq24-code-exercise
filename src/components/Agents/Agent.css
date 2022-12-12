@@ -1,5 +1,5 @@
 .container {
-  margin: 2rem;
+  margin-top: 1rem;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 10px 25px rgba(79, 82, 177, 0.35);
@@ -7,12 +7,20 @@
   flex-direction: column;
   text-align: center;
   width: 359px;
-  margin-bottom: 112px;
+  /* margin-bottom: 112px; */
 }
 
-.avatar-container {
-  margin-top: -64px;
-  margin-bottom: 8px;
+.container header {
+  margin-bottom: 20px;
+}
+
+.container header p {
+  margin: 0;
+}
+
+.avatar-holder {
+  margin: 25px 0;
+  /* margin-bottom: 8px; */
 }
 
 .avatar {
@@ -25,12 +33,12 @@
   display: inline-block;
 }
 
-.title {
+.agent-name {
   color: #343799;
   font-size: 20px;
   letter-spacing: 0.04em;
-  line-height: 20px;
-  margin-bottom: 8px;
+  /* line-height: 20px; */
+  /* margin-bottom: 8px; */
   text-transform: uppercase;
 }
 
@@ -38,8 +46,9 @@
   color: #1c1c21;
   font-size: 32px;
   font-weight: bold;
-  line-height: 56px;
-  margin-bottom: 24px;
+  margin: 0;
+  /* padding: 30px 0; */
+  text-transform: capitalize;
 }
 
 .body {
@@ -47,6 +56,8 @@
   font-size: 16px;
   line-height: 24px;
   padding: 0 32px;
+  /* max-height: 120px; */
+  margin-bottom: 25px;
 }
 
 footer {
@@ -59,7 +70,11 @@ footer {
   justify-content: center;
 }
 
-footer .stat {
+footer .full-width-flex-box .one-third-flex-box {
+  text-transform: capitalize;
+}
+
+/* footer .stat {
   font-family: museo-slab, sans-serif;
   font-style: normal;
   font-weight: 900;
@@ -68,7 +83,7 @@ footer .stat {
   text-align: center;
   color: #ffffff;
   margin-bottom: 4px;
-}
+} */
 
 .bordered {
   border-width: 0 1px 0 1px;

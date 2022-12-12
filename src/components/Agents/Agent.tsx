@@ -1,18 +1,38 @@
-import type { FC } from "react";
+import React, { FC } from 'react'
 import { IAgent } from "../../types/Agent";
-
 import './Agent.css'
 
-const Agent: FC<{ agent: IAgent }> = ({ agent }) => {
+interface Props {
+  agent: IAgent
+  showDeepDetails?: boolean
+  onSelect: () => void
+}
+
+const Agent: FC<Props> = ({
+  agent, showDeepDetails, onSelect
+}) => {
+  const photo = agent.photoUrl ? agent.photoUrl : '/avatar.png'
   return (
-    <div className="container">
+    <div className="container" onClick={onSelect}>
       <header>
         <div className="avatar-holder">
-          <img src={agent.photoUrl} className="avatar" alt={agent.firstName} />
+          <img src={photo} className="avatar" alt={agent.firstName} />
         </div>
-        <h2 className="agent-name">{agent.firstName + " " + agent.lastName}</h2>
+        <h2 className="name">{agent.firstName + ' ' + agent.lastName}</h2>
+        {showDeepDetails && (
+          <p>
+            <b>License: </b> {agent.agentLicense}
+          </p>
+        )}
       </header>
-      <div className="body">{agent.aboutMe}</div>
+
+      <div className="body">
+        { showDeepDetails
+          ? agent.aboutMe
+          : agent.aboutMe.substring(0, 150)
+        }
+      </div>
+
       <footer>
         <div className="full-width-flex-box">
           <div className="one-third-flex-box">
@@ -24,7 +44,7 @@ const Agent: FC<{ agent: IAgent }> = ({ agent }) => {
         </div>
       </footer>
     </div>
-  );
-};
+  )
+}
 
-export default Agent;
+export default Agent
