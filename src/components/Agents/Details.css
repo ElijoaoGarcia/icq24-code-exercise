@@ -1,0 +1,85 @@
+.popup {
+    position: fixed;
+    display: block;
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: block;
+    justify-content: center;
+    padding: 15px;
+    box-sizing: border-box;
+    animation: opacity-up .3s ease-in-out;
+}
+
+@keyframes opacity-up {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes scale-up {
+    0% {
+        scale: .70;
+    }
+
+    100% {
+        scale: 1;
+    }
+}
+
+.details-content {
+    display: block;
+    position: relative;
+    background-color: #fff;
+    min-height: 10px;
+    width: 500px;
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    animation-delay: .28s;
+    animation: scale-up .6s ease-out;
+}
+
+.details-content .header {
+    border-bottom: 0.5px solid #c4c4c4;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.details-content .header h2 {
+    margin: 0;
+}
+
+.details-content .header button {
+    border: none;
+    background-color: transparent;
+    font-size: large;
+    transition: scale 1s ease-in-out;
+}
+
+.details-content .header button:focus {
+    scale: .95;
+}
+
+
+@media only screen and (max-width: 720px) {
+    .details-content {
+        width: 450px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .details-content {
+        width: 100%;
+    }
+}
