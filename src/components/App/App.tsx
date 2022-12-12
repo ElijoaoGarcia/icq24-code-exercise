@@ -2,6 +2,7 @@ import React, { FC, useEffect, useState } from 'react'
 import { IAgent } from '../../types/Agent'
 import Form from '../Agents/Form'
 import Agents from '../Agents/Agents'
+import Details from '../Agents/Details'
 import axios from 'axios'
 import './App.css'
 
@@ -39,6 +40,9 @@ const App: FC = () => {
   const [search, setSearch] = useState('')
   const [agents, setAgents] = useState<IAgent[]>([])
   const [showForm, setShowForm] = useState(false)
+  const [agent, setAgent] = useState<IAgent>(defaultAgent)
+
+  const isAgentSelected = agent.id > 0
 
   const isSearching = search.length > 0
 
@@ -85,10 +89,21 @@ const App: FC = () => {
           agents={agents.filter(filterAgents)}
           isSearching={isSearching}
           isLoading={isLoading}
-          onSelect={(a) => {return}}
+          onSelect={(a) => setAgent(a)}
         />
 
       </div>
+
+      <Details
+        isVisibe={isAgentSelected}
+        agent={agent}
+        onClose={(fetch) => {
+          setAgent(defaultAgent)
+          if (fetch) {
+            onFetchAgents()
+          }
+        }}
+      />
 
       <Form
         isVisible={showForm}
