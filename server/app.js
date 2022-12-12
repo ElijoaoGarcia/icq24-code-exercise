@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }))
 const agents = router.route('/agents')
 const reviews = router.route('/reviews')
 
-agents.get('/', async (req, res, next) => {
+agents.get(async (req, res, next) => {
   try {
     const agents = await Agent.findAll({
       include: [
@@ -23,7 +23,7 @@ agents.get('/', async (req, res, next) => {
   }
 })
 
-agents.post('/', async (req, res) => {
+agents.post(async (req, res) => {
   try {
     const { agent } = req.body
     await Agent.create(agent)
@@ -33,7 +33,7 @@ agents.post('/', async (req, res) => {
   }
 })
 
-reviews.post('/', async (req, res) => {
+reviews.post(async (req, res) => {
   try {
     const { review } = req.body
     Review.create(review)
