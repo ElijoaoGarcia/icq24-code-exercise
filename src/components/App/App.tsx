@@ -97,7 +97,7 @@ const App: FC = () => {
       </div>
 
       <Details
-        isVisibe={isAgentSelected}
+        isVisible={isAgentSelected}
         agent={agent}
         onClose={(fetch) => {
           setAgent(defaultAgent)
