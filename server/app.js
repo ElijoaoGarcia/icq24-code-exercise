@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }))
 const agents = router.route('/agents')
 const reviews = router.route('/reviews')
 
-agents.get(async (req, res, next) => {
+agents.get(async (_, res, next) => {
   try {
     const agents = await Agent.findAll({
       include: [
