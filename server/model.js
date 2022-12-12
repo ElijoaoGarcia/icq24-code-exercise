@@ -56,13 +56,16 @@ Review.init(
       autoIncrement: true
     },
     agentId: {
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
+      allowNull: false
     },
     fullName: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
+      allowNull: false
     },
     description: {
-      type: Sequelize.TEXT
+      type: Sequelize.TEXT,
+      allowNull: false
     }
   },
   {
