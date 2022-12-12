@@ -17,12 +17,18 @@ const Agents: FC<Props> = ({
 }) => {
 
   if(isLoading){
-    return <Loader size={10} />
+    return (
+      <div style={{
+        display: 'flex', justifyContent: 'center', marginTop: 10
+      }}>
+        <Loader size={45} purple />
+      </div>
+    )
   }
 
   if(isSearching && !agents.length) {
     return (
-      <p>Without results.</p>
+      <p className='without-results'>Without results.</p>
     )
   }
 

@@ -4,3 +4,9 @@
   justify-content: center;
   padding-bottom: 1rem;
 }
+
+.without-results {
+  font-size: medium;
+  text-align: center;
+  margin-top: 20px;
+}
