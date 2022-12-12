@@ -12,7 +12,7 @@ export interface IAgent {
   photoUrl: string
   agentLicense: string
   address: string
-  practiceAreas: string[]
+  practiceAreas: string
   aboutMe: string
   reviews: IReview[]
 }
