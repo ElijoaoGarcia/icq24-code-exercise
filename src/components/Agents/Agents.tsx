@@ -1,28 +1,42 @@
-import type { FC } from "react";
-import { useState, useEffect } from "react";
-import Agent from "./Agent";
-import { IAgent } from "../../types/Agent";
-import axios from "axios";
+import React, { FC } from 'react'
+import { IAgent } from '../../types/Agent'
+import Loader from '../Loader'
+import Agent from './Agent'
 import './Agents.css'
 
-const Agents: FC = () => {
-  const [agents, setAgents] = useState<IAgent[]>([]);
+interface Props {
+  agents: IAgent[]
+  isLoading: boolean
+  isSearching: boolean
+  onSelect: (agent: IAgent) => void
+}
 
-  useEffect(() => {
-    async function fetchInitialData() {
-      const response = await axios.get("/agents");
-      setAgents(response.data);
-    }
-    fetchInitialData();
-  }, []);
+const Agents: FC<Props> = ({
+  agents, isLoading, isSearching,
+  onSelect
+}) => {
+
+  if(isLoading){
+    return <Loader size={10} />
+  }
+
+  if(isSearching && !agents.length) {
+    return (
+      <p>Without results.</p>
+    )
+  }
 
   return (
     <div className="agents">
       {agents.map((agent) => (
-        <Agent key={agent.id} agent={agent} />
+        <Agent
+          onSelect={() => onSelect(agent)}
+          key={agent.id}
+          agent={agent}
+        />
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default Agents;
+export default Agents
