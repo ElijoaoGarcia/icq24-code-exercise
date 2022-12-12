@@ -71,6 +71,24 @@
     scale: .95;
 }
 
+.details-content .details-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.details-content .details-container ul{
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+    /* background-color: red; */
+    border-top: 0.5px solid #c4c4c4;
+}
+
+.details-content .details-container form h2 {
+    margin: 0;
+}
+
 
 @media only screen and (max-width: 720px) {
     .details-content {
