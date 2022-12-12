@@ -1,5 +1,5 @@
-import React, { ChangeEvent, FC, Fragment, useRef, useState } from 'react'
-import { useOutsideClickDetector } from '../../hooks'
+import React, { ChangeEvent, FC, Fragment, useEffect, useRef, useState } from 'react'
+import { useHiddenBodyScroll, useOutsideClickDetector } from '../../hooks'
 import { IAgent, INewReview, IReview } from '../../types/Agent'
 import axios from 'axios'
 import Loader from '../Loader'
@@ -8,7 +8,7 @@ import Review from './Review'
 import './Details.css'
 
 interface Props {
-  isVisibe: boolean
+  isVisible: boolean
   onClose: (fetch?: boolean) => void
   agent: IAgent
 }
@@ -24,7 +24,7 @@ const sendReview = async (review: INewReview) => {
 }
 
 const Details: FC<Props> = ({
-  isVisibe, onClose, agent
+  isVisible, onClose, agent
 }) => {
   const [isLoading, setIsLoading] = useState(false)
   const [data, setData] = useState(defaultReview)
@@ -32,6 +32,7 @@ const Details: FC<Props> = ({
   useOutsideClickDetector(contentWrapperRef, () => {
     onClose()
   })
+  useHiddenBodyScroll(isVisible)
 
   const inputHandle = ({ target: { name, value } }: ChangeEvent<HTMLInputElement & HTMLTextAreaElement>): void => {
     setData({
@@ -65,7 +66,7 @@ const Details: FC<Props> = ({
     }
   }
 
-  if (!isVisibe) return <Fragment />
+  if (!isVisible) return <Fragment />
 
   return (
     <div className='popup'>

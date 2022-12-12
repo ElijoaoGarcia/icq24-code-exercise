@@ -15,4 +15,18 @@ function useOutsideClickDetector (ref: any, cb: () => void): void {
   }, [ref]);
 }
 
-export { useOutsideClickDetector }
+const useHiddenBodyScroll = (isVisible: boolean) => {
+  const appRef = document.getElementsByTagName('body')
+
+  useEffect(() => {
+    if (isVisible) {
+      if(appRef) appRef[0].style.overflowY = 'hidden'
+    }
+    else {
+      if(appRef) appRef[0].style.overflowY = 'auto'
+    }
+    // eslint-disable-next-line
+  }, [isVisible])
+}
+
+export { useOutsideClickDetector, useHiddenBodyScroll }

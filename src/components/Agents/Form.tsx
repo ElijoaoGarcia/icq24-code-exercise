@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FC, FormEvent, Fragment, useEffect, useRef, useState } from 'react'
-import { useOutsideClickDetector } from '../../hooks'
+import { useHiddenBodyScroll, useOutsideClickDetector } from '../../hooks'
 import { INewAgent } from '../../types/Agent'
 import axios from 'axios'
 import Loader from '../Loader'
@@ -30,9 +30,13 @@ const Form: FC<Props> = ({
   useOutsideClickDetector(contentWrapperRef, () => {
     onClose(false)
   })
+  useHiddenBodyScroll(isVisible)
 
   useEffect(() => {
-    if (isVisible) setData(defaultAgent)
+    if (isVisible) {
+      setData(defaultAgent)
+    }
+    // eslint-disable-next-line
   }, [isVisible])
 
   const inputHandle = ({ target: { name, value } }: ChangeEvent<HTMLInputElement & HTMLTextAreaElement>): void => {
